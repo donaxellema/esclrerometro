@@ -1,0 +1,102 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <!-- <img src="assets/images/logos/logo_cactum.png"> -->
+        </div>
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+            Bienvenido!!
+        </div>
+
+        <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+           
+        </div>
+
+    </div>
+
+    <div id="login-form-wrapper" fusePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="logo" fxHide.gt-xs>
+                <img src="assets/images/logos/logo_cactum.png">
+            </div>
+
+            <div class="title">INGRESA A TU CUENTA</div>
+
+            <div *ngIf="divError" class="input-group">
+                <label> {{messageError}} </label>
+              </div>
+
+            <form name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="login()">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo Electrónico</mat-label>
+                    <input matInput formControlName="email" name="email" [(ngModel)]="loginD.email"  (keypress)="rstInp()">
+                    <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                        Correo Electrónico es requerido
+                    </mat-error>
+                    <mat-error
+                        *ngIf="!loginForm.get('email').hasError('required') &&
+                                loginForm.get('email').hasError('email')">
+                        Por favor, ingresa un correo eletrónico valido
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" formControlName="password" name="password"  [(ngModel)]="loginD.password"  (keypress)="rstInp()">
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error>
+                        Contraseña es requerido
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+                     fxLayoutAlign="space-between center">
+                    <!-- <mat-checkbox class="remember-me" aria-label="Remember Me">
+                        Remember Me
+                    </mat-checkbox> -->
+<!-- 
+                    <a class="forgot-password" [routerLink]="'/auth/forgot-password'">
+                        Olvidaste tu contraseña?
+                    </a> -->
+                </div>
+
+                <button  type="submit" mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
+                        [disabled]="loginForm.invalid" *ngIf="!isLogin">
+                    INICIAR SESIÓN
+                </button>
+
+                <div  *ngIf="isLogin" class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+
+            </form>
+
+            <div class="separator">
+                <span class="text">O</span>
+            </div>
+
+            <!-- <div fxLayout="column" fxLayoutAlign="start center">
+
+                <button mat-raised-button class="google">
+                    Ingresa con Google
+                </button>
+
+                <button mat-raised-button class="facebook">
+                    Ingresa con Facebook
+                </button>
+            </div> -->
+
+            <!-- <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">No estas registrado?</span>
+                <a class="link" [routerLink]="'/auth/register'">Crear una cuenta</a>
+            </div> -->
+        </div>
+    </div>
+</div>

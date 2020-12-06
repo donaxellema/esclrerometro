@@ -1,0 +1,45 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+        <div class="content p-24">          
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <div class="h2 mb-24">Productos</div>
+                </div>
+
+
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+                        <mat-label>Busqueda</mat-label>
+                        <input matInput name="firstName">
+                    </mat-form-field>
+                </div>
+                <a routerLinkActive="active-item" routerLink="/apps/producto/nuevo" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Nuevo</a>
+                <!-- <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Nuevo</button>   -->
+
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Descripción</th>
+                            <th>Presentación</th>
+                            <th>Registro Sanitario</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                            
+                    <tbody>
+                        <tr *ngFor="let item of lista; let i = index">
+                            <td width="20%">{{item.parametro_descri}}</td>
+                            <td>{{item.producto_nombre}}</td>
+                            <td>{{item.parametro_descri}}</td>
+                            <td width="30%">{{item.producto_regsani}}</td>
+                            <td><input type="checkbox" [(ngModel)]="item.producto_estado" [checked]="item.producto_estado"></td>
+                            <td>
+                                <a routerLinkActive="active-item" routerLink="/apps/producto/{{item.pk_producto}}" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

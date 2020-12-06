@@ -1,0 +1,115 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+  <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+      <div class="content p-24">          
+          <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+              <div class="h2 mb-24">Cuadro de Calculos</div>
+          </div>
+
+          <div *ngIf="data!=null">
+            
+          
+          <div style="overflow-x:auto;">
+            <table >
+              <tr>
+                  <td>
+                     <b>Promedio:</b>
+                  </td>
+                  <td>
+                    <div style="
+                    display:inline-block;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 7ch;"> 
+                      {{data.escle_promedio}}
+                    </div>
+                  </td>
+                  <td>
+                      <b>Desviación:</b>
+                   </td>
+                   <td>
+                     <div style="
+                     display:inline-block;
+                     white-space: nowrap;
+                     overflow: hidden;
+                     text-overflow: ellipsis;
+                     max-width: 7ch;">
+                       {{data.escle_desviacio}}
+                      </div>
+                   </td>
+              </tr>
+              <tr>
+                  <td>
+                     <b>Observación:</b>
+                  </td>
+                  <td>
+                      {{data.escle_observacion}}
+                  </td>
+                  <td>
+                      <b>Promedio Corregido:</b>
+                   </td>
+                   <td>
+                       {{data.escle_promed_corre}}
+                   </td>
+              </tr>
+              <tr>
+                  <td>
+                     <b>FC_TABLA:</b>
+                  </td>
+                  <td>
+                      {{data.escle_fc_tabla}}
+                  </td>
+                  <td>
+                      <b>Dispersión:</b>
+                   </td>
+                   <td>
+                       {{data.escle_dispercion}}
+                   </td>
+              </tr>
+          </table>
+        </div>
+         
+
+          
+          <div style="overflow-x:auto;">
+          <table>
+            <tr>
+                <td [ngClass]="{'colortd': data.json_corregido[0].color === 'red'}"><input matInput disabled name="lec0" [(ngModel)]="data.json_corregido[0].val" (keypress)="valPress($event)" (blur)="valBlur($event)"></td>
+                <!-- <td Class="p-3 mb-2 bg-danger"><input matInput name="lec0" [(ngModel)]="data.json_corregido[0].val"  (blur)="valBlur($event)"></td> -->
+                <td [ngClass]="{'colortd': data.json_corregido[1].color === 'red'}"><input matInput disabled name="lec1" [(ngModel)]="data.json_corregido[1].val" ></td>
+                <td [ngClass]="{'colortd': data.json_corregido[2].color === 'red'}"><input matInput disabled name="lec2" [(ngModel)]="data.json_corregido[2].val" ></td>
+            </tr>
+            <tr>
+                <td [ngClass]="{'colortd': data.json_corregido[3].color === 'red'}"><input matInput disabled name="lec3" [(ngModel)]="data.json_corregido[3].val" ></td>
+                <td [ngClass]="{'colortd': data.json_corregido[4].color === 'red'}"><input matInput disabled name="lec4" [(ngModel)]="data.json_corregido[4].val" ></td>
+                <td [ngClass]="{'colortd': data.json_corregido[5].color === 'red'}"><input matInput disabled name="lec5" [(ngModel)]="data.json_corregido[5].val" ></td>
+            </tr>
+            <tr>
+                <td [ngClass]="{'colortd': data.json_corregido[6].color === 'red'}"><input matInput disabled name="lec6" [(ngModel)]="data.json_corregido[6].val" ></td>
+                <td [ngClass]="{'colortd': data.json_corregido[7].color === 'red'}"><input matInput disabled name="lec7" [(ngModel)]="data.json_corregido[7].val" ></td>
+                <td [ngClass]="{'colortd': data.json_corregido[8].color === 'red'}"><input matInput disabled name="lec8" [(ngModel)]="data.json_corregido[8].val" ></td>
+            </tr>
+            <tr>
+                <td [ngClass]="{'colortd': data.json_corregido[9].color === 'red'}"><input matInput disabled name="lec9" [(ngModel)]="data.json_corregido[9].val" ></td>
+                <td [ngClass]="{'colortd': data.json_corregido[10].color === 'red'}"><input matInput disabled name="lec10" [(ngModel)]="data.json_corregido[10].val" ></td>
+                <td [ngClass]="{'colortd': data.json_corregido[11].color === 'red'}"><input matInput disabled name="lec11" [(ngModel)]="data.json_corregido[11].val"></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+
+    <div *ngIf="data==null">
+      <div>
+        <span>Error en Captura de 12 Datos</span>
+      </div>
+    </div>
+
+      </div>
+  </div>
+</div>
+
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+</div>
+

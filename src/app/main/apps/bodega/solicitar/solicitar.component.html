@@ -1,0 +1,57 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+        <div class="content p-24">          
+            <div class="position-relative p-24" fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="column" fxLayoutAlign="start start">
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <button mat-raised-button (click)="openDialog()"
+                  class="add-product-button fuse-white mt-24 mt-md-0">
+                      <span>Añadir Detalle</span>
+                  </button>       
+                </div>
+            </div>
+
+            <div class="content-card">
+
+                <!-- 
+                                  <table class="highlight">
+                                    <tr *ngFor="let item of dataSource"><td>{{item.name}}</td></tr>
+                                  </table> -->
+                
+                                  
+                          <table class="styled-table">
+                            <thead>
+                              <tr>
+                                  <th>Nombre</th>
+                                  <th>Lote</th>
+                                  <th>Fecha de Vencimiento</th>
+                                  <th>Cantidad</th>
+                                  <th>Eliminar</th>
+                              </tr>
+                            </thead>
+                
+                            <tbody>
+                              <tr *ngFor="let item of lista; let i = index">
+                                <td width="40%">{{item.producto_nombre}}</td>
+                                <td>{{item.lote_numero}}</td>
+                                <td>{{item.lote_fechacad}}</td>
+                                <td><input type="number" name="cantidad" [(ngModel)]="item.cantidad" (change)="calcular()"></td>
+                                <td><button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="delete(i)">Eliminar</button></td>                
+                              </tr>
+                            </tbody>
+                          </table>
+                                  
+            </div>
+
+            <div class="position-relative p-24" fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="column" fxLayoutAlign="start start">
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="openDialog()">Guardar Borrador</button> &nbsp;&nbsp;
+                  <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="generarSolicitud()">Solicitar</button>   
+                </div>
+            </div>       
+        </div>
+    </div>
+</div>

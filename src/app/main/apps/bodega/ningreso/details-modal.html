@@ -1,0 +1,73 @@
+<!-- <div class="content-card">
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+          <th>Nombre</th>
+          <th>Lote</th>
+          <th>Fecha de Vencimiento</th>
+          <th>Cantidad</th>
+          <th>VU</th>
+          <th>VT</th>
+          <th>Añadir</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{item.producto_nombre}}</td>
+        <td>{{item.lote_numero}}</td>
+        <td>{{item.lote_fechacad}}</td>
+        <td><input type="number" name="cantidad" [(ngModel)]="item.cantidad"></td>
+        <td>{{item.vu}}</td>
+        <td>{{item.vt}}</td>
+        <td><button class="btn btn-default" (click)="add(item)">Añadir</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+  
+</div> -->
+
+
+<div class="modal-inventario">
+  <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="h1 pr-16">Agregar Item a Detalle de Ingreso</div>
+  </div>
+  <div class="p-16" fxLayout="row">
+    <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+      <mat-label>Busqueda</mat-label>
+      <input matInput name="firstName">
+    </mat-form-field>
+  </div>
+
+
+  <table  class="styled-table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Lote</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Cantidad</th>
+            <th>VU</th>
+            <th>Añadir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data">
+            <td width="40%">{{item.producto_nombre}}</td>
+            <td>{{item.lote_numero}}</td>
+            <td>{{item.lote_fechacad}}</td>
+            <td><input type="number" name="cantidad" [(ngModel)]="item.cantidad"></td>
+            <td><input type="number" name="vu" [(ngModel)]="item.vu"></td>
+            <td><button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="add(item)">Añadir</button></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <label for="">Paginator</label>
+  
+  <!-- <mat-paginator [length]="100"
+                [pageSize]="10"
+                (page)="pageEvent = changePage($event)">
+  </mat-paginator>   -->
+</div>

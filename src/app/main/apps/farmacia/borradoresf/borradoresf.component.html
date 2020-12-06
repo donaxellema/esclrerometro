@@ -1,0 +1,47 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+        <div class="content p-24">          
+            <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                <div class="h2 mb-24">Borradores de Ingreso</div>
+            </div>
+
+            <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+                    <mat-label>Busqueda</mat-label>
+                    <input matInput name="firstName">
+                  </mat-form-field>
+            </div>
+
+
+            <table class="styled-table">
+                <thead>
+                  <tr>
+                      <th>Fecha de Ingreso</th>
+                      <th>Usuario</th>
+                      <th>Acta de Entrega</th>
+                      <th>Proveedor</th>
+                      <th>Ver</th>
+                      <th>Imprimir</th>
+                      <th>Modificar</th>
+                      <th>Eliminar</th>
+                  </tr>
+                </thead>
+    
+                <tbody>
+                  <tr *ngFor="let item of listaBorradores; let i = index">
+                    <td>{{item.ningreso_far_fecha}}</td>
+                    <td>{{item.per_nombres}} {{item.per_apellidopaternos}} </td>
+                    <td>{{item.ningreso_bod_acta}}</td>
+                    <td>{{item.proveedor_razon_social}}</td>
+                    <td><input type="number" name="vu" [(ngModel)]="item.vu" (change)="calcular()"></td>
+                    <td>{{item.vt}}</td>
+                    <td><input type="checkbox" [(ngModel)]="item.iva" [checked]="item.iva" (change)="calcular()"></td>
+                    <td><button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="delete(i)">Eliminar</button></td>
+    
+                  </tr>
+                </tbody>
+              </table>
+            
+        </div>
+    </div>
+</div>

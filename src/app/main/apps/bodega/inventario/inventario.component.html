@@ -1,0 +1,91 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="h1 pr-16">Inventario General</div>
+      </div>
+      <div class="p-16" fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+          <mat-label>Busqueda</mat-label>
+          <input matInput name="firstName">
+        </mat-form-field>
+      </div>
+     
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+        <div class="content p-24">          
+            <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                <table  class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Lote</th>
+                            <th>Fecha de Vencimiento</th>
+                            <th>Stock</th>
+                            <th>VT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listaInventario">
+                            <td width="40%">{{item.producto_nombre}}</td>
+                            <td>{{item.lote_numero}}</td>
+                            <td>{{item.lote_fechacad}}</td>
+                            <td>{{item.stock}} </td>
+                            <td>{{item.valor}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!-- <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="h1 pr-16">Inventario General</div>
+    </div>
+    <div class="p-16" fxLayout="row">
+      <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+        <mat-label>Busqueda</mat-label>
+        <input matInput name="firstName">
+      </mat-form-field>
+    </div>
+  
+  
+    <table  class="styled-table">
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Lote</th>
+              <th>Fecha de Vencimiento</th>
+              <th>Cantidad</th>
+              <th>Stock</th>
+              <th>VT</th>
+              <th>Añadir</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of listaInventario">
+              <td width="40%">{{item.producto_nombre}}</td>
+              <td>{{item.lote_numero}}</td>
+              <td>{{item.lote_fechacad}}</td>
+              <td><input type="number" name="cantidad" [(ngModel)]="item.cantidad"></td>
+              <td>{{item.stock}} </td>
+              <td>{{item.valor}}</td>
+              <td><button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="add(item)">Añadir</button></td>
+          </tr>
+      </tbody>
+    </table>
+  
+    <label for="">Paginator</label> -->
+    
+    <!-- <mat-paginator [length]="100"
+                  [pageSize]="10"
+                  (page)="pageEvent = changePage($event)">
+    </mat-paginator>   -->

@@ -1,0 +1,37 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+        <div class="content p-24">          
+            <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                <div class="h2 mb-24">Egresos de Farmacia</div>
+            </div>
+
+            <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+                    <mat-label>Busqueda</mat-label>
+                    <input matInput name="firstName">
+                  </mat-form-field>
+            </div>
+
+
+            <table class="styled-table">
+                <thead>
+                  <tr>
+                      <th>Fecha de Egreso</th>
+                      <th>Usuario</th>
+                      <th>Ver</th>
+                      <th>Imprimir</th>
+                      <th>Eliminar</th>
+                  </tr>
+                </thead>
+    
+                <tbody>
+                  <tr *ngFor="let item of listaEgresos; let i = index">
+                    <td>{{item.negreso_far_fecha}}</td>
+                    <td>{{item.per_nombres}} {{item.per_apellidopaternos}}</td>   
+                  </tr>
+                </tbody>
+              </table>
+            
+        </div>
+    </div>
+</div>

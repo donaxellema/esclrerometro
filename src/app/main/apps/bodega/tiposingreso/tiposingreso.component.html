@@ -1,0 +1,39 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+        <div class="content p-24">          
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <div class="h2 mb-24">Tipos de Ingreso</div>
+                </div>
+
+
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+                        <mat-label>Busqueda</mat-label>
+                        <input matInput name="firstName">
+                    </mat-form-field>
+                </div>
+                <a routerLinkActive="active-item" routerLink="/apps/tipoingreso/nuevo" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Nuevo</a>
+                <!-- <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Nuevo</button>   -->
+
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                            
+                    <tbody>
+                        <tr *ngFor="let item of lista; let i = index">
+                            <td>{{item.tipo_ingreso_descri}}</td>
+                            <td><input type="checkbox" [(ngModel)]="item.tipo_ingreso_estado" [checked]="item.tipo_ingreso_estado"></td>
+                            <td>
+                                <a routerLinkActive="active-item" routerLink="/apps/tipoingreso/{{item.pk_tipo_ingreso}}" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

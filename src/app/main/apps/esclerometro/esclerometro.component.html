@@ -1,0 +1,159 @@
+<!-- <div class="page-layout blank p-24" fusePerfectScrollbar>
+    <mat-progress-bar mode="indeterminate" *ngIf="!loaded"></mat-progress-bar>
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column" *ngIf="loaded">
+        <div class="content p-24">          
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <div class="h2 mb-24">Esclerometro</div>
+                </div>
+
+
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+                        <mat-label>Busqueda</mat-label>
+                        <input matInput name="busqueda" (keyup)="getBusqueda($event)" [(ngModel)]="busqueda">
+                    </mat-form-field>
+                </div>
+                <a routerLinkActive="active-item" routerLink="/apps/esclerometro/nuevo" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Nuevo</a>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Zona</th>
+                            <th>Sector</th>
+                            <th>Manzana</th>
+                            <th>Predio</th>
+                            <th>Observación</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                            
+                    <tbody>
+                        <tr *ngFor="let item of lista; let i = index">
+                            <td>{{item.escle_zona}}</td>
+                            <td>{{item.escle_sector}}</td>
+                            <td>{{item.escle_manzana}}</td>
+                            <td>{{item.escle_predio}}</td>
+                            <td>{{item.escle_observacion}}</td>
+                            <td>
+                                <a routerLinkActive="active-item" routerLink="/apps/esclerometro/{{item.pk_esclerometro}}" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Editar</a>
+                            </td>
+                            <td><button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="eliminar(item.pk_esclerometro)">Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <mat-paginator #paginator
+                    [length]="conteo"
+                    [pageIndex]="0"
+                    [pageSize]="10"
+                    (page)="onPaginateChange($event)">
+                </mat-paginator>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+    <mat-progress-bar mode="indeterminate" *ngIf="!loaded"></mat-progress-bar>
+    <div id="forms" class="page-layout simple fullwidth" fxLayout="column" *ngIf="loaded">
+        <div class="content p-24">          
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <div class="h2 mb-24">Esclerometro</div>
+                </div>
+
+
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <mat-form-field appearance="outline" fxFlex="100" class="pr-4">
+                        <mat-label>Busqueda</mat-label>
+                        <input matInput name="busqueda" (keyup)="getBusqueda($event)" [(ngModel)]="busqueda">
+                    </mat-form-field>
+                </div>
+                <a routerLinkActive="active-item" routerLink="/apps/esclerometro/nuevo" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Nuevo</a>
+
+
+                <mat-table [dataSource]="dataSource" matSort>  
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Zona </mat-header-cell>
+                        <mat-cell *matCellDef="let row" data-label="zona"> {{row.escle_zona}} </mat-cell>
+                      </ng-container>
+                  
+                      <ng-container matColumnDef="progress">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Sector </mat-header-cell>
+                        <mat-cell *matCellDef="let row" data-label="sector"> {{row.escle_sector}} </mat-cell>
+                      </ng-container>
+                  
+                      <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Manzana </mat-header-cell>
+                        <mat-cell *matCellDef="let row" data-label="manzana"> {{row.escle_manzana}} </mat-cell>
+                      </ng-container>
+                  
+                      <ng-container matColumnDef="color">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Predio </mat-header-cell>
+                        <mat-cell *matCellDef="let row"  data-label="predio"> {{row.escle_predio}} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="obser">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Observación </mat-header-cell>
+                        <mat-cell *matCellDef="let row"  data-label="observacion"> {{row.escle_observacion}} </mat-cell>
+                      </ng-container>
+                  
+                      <ng-container matColumnDef="editar">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
+                        <mat-cell *matCellDef="let row"  data-label="editar"> 
+                            <a routerLinkActive="active-item" routerLink="/apps/esclerometro/{{row.pk_esclerometro}}" mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0">Editar</a>    
+                        </mat-cell>
+                      </ng-container>
+                  
+                      <ng-container matColumnDef="eliminar">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </mat-header-cell>
+                        <mat-cell *matCellDef="let row"  data-label="eliminar">
+                          <button mat-raised-button class="add-product-button fuse-white mt-24 mt-md-0" (click)="eliminar(row.pk_esclerometro)">Eliminar</button>
+                        </mat-cell>
+                      </ng-container>
+                  
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *matRowDef="let row; columns: displayedColumns;">
+                      </mat-row>
+                    </mat-table>
+                  
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+         </div>
+    </div>
+</div>
+  
+    
+    
+    
+    
+    
+    
+    
+    <!-- <mat-table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="id"> {{row.cnt}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="progress">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="progress"> {{row.progress}}% </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="name"> {{row.name}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="color">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="color"> {{row.color}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+   -->
